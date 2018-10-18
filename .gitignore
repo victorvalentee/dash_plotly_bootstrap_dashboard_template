@@ -1,3 +1,3 @@
 # JetBrains Pycharm stuff.
-.idea*
-__pycache__*
+.idea/
+__pycache__/
