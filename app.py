@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import dash
 import dash_html_components as dhtml
+from simulacao import render_datatable
 
 external_stylesheets = ["https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"]
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
@@ -17,13 +18,23 @@ app.layout = dhtml.Div([    # BODY.
             dhtml.Ul([
                 dhtml.Li([
                     dhtml.A([
-                        "Dashboard"
-                        # <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                        "Simulação"
                     ], href="#", className="nav-link active")
+                ], className="nav-item"),
+                dhtml.Li([
+                    dhtml.A([
+                        "Relatório"
+                    ], href="#", className="nav-link")
                 ], className="nav-item")
             ], className="nav flex-column")
         ], className="sidebar-sticky")
     ], className='col-md-2 d-none d-md-block bg-light sidebar'),
+
+    dhtml.Main([            # MAIN (TODO: VAI SER RELATIVA AO CLIQUE NOS BOTÕES DO MENU LATERAL.)
+        dhtml.Div([
+            dhtml.H2("Simulação de Compra Acima do Limite", className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"),
+            dhtml.Div([render_datatable()]),
+    ], role="main", className="col-md-9 ml-sm-auto col-lg-10 px-4")]),
 
     dhtml.Footer([          # FOOTER.
         dhtml.Div([
